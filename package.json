@@ -1,0 +1,27 @@
+{
+  "name": "remark-clang-format",
+  "version": "0.0.1",
+  "description": "run clang-format for code in markdown",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ir1d/remark-clang-format.git"
+  },
+  "keywords": [
+    "clang-format",
+    "remark"
+  ],
+  "author": "Ir1d",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ir1d/remark-clang-format/issues"
+  },
+  "homepage": "https://github.com/Ir1d/remark-clang-format#readme",
+  "dependencies": {
+    "clang-format": "^1.2.4",
+    "unist-util-visit": "^1.4.0"
+  }
+}
