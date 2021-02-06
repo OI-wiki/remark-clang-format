@@ -9,36 +9,37 @@ var path = require("path");
 function getNativeBinary() {
   let nativeBinary;
 
-  if (os.platform() === "win32") {
-    nativeBinary = path.join(
-      `${__dirname}`,
-      `../clang-format/bin/win32/clang-format.exe`
-    );
-  } else {
-    nativeBinary = path.join(
-      `${__dirname}`,
-      `../clang-format/bin/${os.platform()}_${os.arch()}/clang-format`
-    );
-  }
+  // if (os.platform() === "win32") {
+  //   nativeBinary = path.join(
+  //     `${__dirname}`,
+  //     `../clang-format/bin/win32/clang-format.exe`
+  //   );
+  // } else {
+  nativeBinary = "clang-format-9";
+  // nativeBinary = path.join(
+  //   `${__dirname}`,
+  //   `../clang-format/bin/${os.platform()}_${os.arch()}/clang-format`
+  // );
+  // }
 
-  if (!fs.existsSync(nativeBinary)) {
-    const message =
-      "This module doesn't bundle the clang-format executable for your platform. " +
-      `(${os.platform()}_${os.arch()})\n` +
-      "Consider installing it with your native package manager instead.\n";
-    throw new Error(message);
-  }
+  // if (!fs.existsSync(nativeBinary)) {
+  //   const message =
+  //     "This module doesn't bundle the clang-format executable for your platform. " +
+  //     `(${os.platform()}_${os.arch()})\n` +
+  //     "Consider installing it with your native package manager instead.\n";
+  //   throw new Error(message);
+  // }
   return nativeBinary;
 }
 
 function visitor(node) {
-  let nativeBinary = getNativeBinary();
+  // let nativeBinary = getNativeBinary();
   if (node.type == "code" || node.type == "inlineCode") {
     if (
       node.lang &&
       (node.lang.toLowerCase() == "c++" || node.lang.toLowerCase() == "cpp")
     ) {
-      var child = spawnSync(nativeBinary, { input: node.value });
+      var child = spawnSync("clang-format-9", { input: node.value });
       node.value = child.stdout;
     }
   }
