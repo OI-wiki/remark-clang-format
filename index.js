@@ -15,7 +15,7 @@ function getNativeBinary() {
   //     `../clang-format/bin/win32/clang-format.exe`
   //   );
   // } else {
-  nativeBinary = "clang-format-9";
+  nativeBinary = "clang-format";
   // nativeBinary = path.join(
   //   `${__dirname}`,
   //   `../clang-format/bin/${os.platform()}_${os.arch()}/clang-format`
