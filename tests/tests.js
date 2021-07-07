@@ -1,9 +1,8 @@
-const test = require('ava');
+import test from 'ava';
+import fs from 'fs';
+import remark from 'remark';
 
-const remark = require('remark');
-
-const fs = require('fs');
-const de = require('../index');
+import de from '../index.js';
 
 const in_1 = fs.readFileSync('tests/1.in.md');
 const out_1 = fs.readFileSync('tests/1.out.md');

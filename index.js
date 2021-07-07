@@ -1,7 +1,7 @@
 'use strict';
 
-const visit = require('unist-util-visit');
-const spawnSync = require('child_process').spawnSync;
+import { visit } from 'unist-util-visit';
+import { spawnSync as spawnSync } from 'child_process';
 
 function visitor(node) {
   if (node.type == 'code' || node.type == 'inlineCode') {
@@ -15,8 +15,8 @@ function visitor(node) {
   }
 }
 
-module.exports = function attacher() {
+export default function attacher() {
   return function transformer(tree) {
     visit(tree, visitor);
   };
-};
+}
