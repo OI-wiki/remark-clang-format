@@ -1,16 +1,20 @@
 import test from 'ava';
-import fs from 'fs';
+import { promises } from 'fs';
 import remark from 'remark';
 
 import de from '../index.js';
 
-const in_1 = fs.readFileSync('tests/1.in.md');
-const out_1 = fs.readFileSync('tests/1.out.md');
+async function T(num) {
+  test(`test case #${num}`, async (t) => {
+    const infile = await promises.readFile(`tests/${num}.in.md`);
+    const outfile = await promises.readFile(`tests/${num}.out.md`);
+    remark()
+      .use(de)
+      .process(infile, function (err, res) {
+        t.is(String(res), String(outfile));
+      });
+  });
+}
 
-test('main', (t) => {
-  remark()
-    .use(de)
-    .process(in_1, function (err, res) {
-      t.is(String(res), String(out_1));
-    });
-});
+T(1);
+T(2);
