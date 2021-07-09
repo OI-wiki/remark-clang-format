@@ -9,8 +9,7 @@ function visitor(node) {
       node.lang &&
       (node.lang.toLowerCase() == 'c++' ||
         node.lang.toLowerCase() == 'cpp' ||
-        node.lang.toLowerCase() == 'c' ||
-        node.lang.toLowerCase() == 'javascript')
+        node.lang.toLowerCase() == 'c')
     ) {
       const child = spawnSync('clang-format', { input: node.value });
       node.value = child.stdout;
