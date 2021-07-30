@@ -4,7 +4,6 @@ import { visit } from 'unist-util-visit';
 import { spawnSync as spawnSync } from 'child_process';
 
 function visitor(node) {
-  // console.log(node);
   if (node.type == 'code' || node.type == 'inlineCode') {
     if (
       node.lang &&
