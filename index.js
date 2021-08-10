@@ -12,7 +12,7 @@ function visitor(node) {
         node.lang.toLowerCase() == 'cpp' ||
         node.lang.toLowerCase() == 'c') &&
       (!node.meta || !node.meta.includes('nolint')) &&
-      (node.value && node.value.includes('--8<--'))
+      (node.value && (!node.value.includes('--8<--')))
     ) {
       const child = spawnSync('clang-format', { input: node.value });
       node.value = child.stdout;
