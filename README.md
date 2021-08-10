@@ -1,6 +1,5 @@
 # remark-clang-format
 
-
 ## Install
 
 ```bash
