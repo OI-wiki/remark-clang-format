@@ -20,9 +20,12 @@ function visitor(node) {
       }
       if (!child.stdout) {
         console.warn("[remark-clang-format] empty stdout");
-        console.warn("code: ", node.value);
+        console.warn("[remark-clang-format] original code: ", node.value);
+        console.warn("[remark-clang-format] child info", child);
+        // node value left untouched
+      } else {
+        node.value = child.stdout;
       }
-      node.value = child.stdout;
     }
   }
 }
