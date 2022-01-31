@@ -16,11 +16,11 @@ function visitor(node) {
     ) {
       const child = spawnSync('clang-format', { input: node.value });
       if (child.stderr) {
-        console.warn("[remark-clang-format] stderr: ", child.stderr)
+        console.warn("[remark-clang-format] stderr: ", child.stderr);
       }
       if (!child.stdout) {
-        console.warn("[remark-clang-format] empty stdout")
-        console.warn("code: ", node.value)
+        console.warn("[remark-clang-format] empty stdout");
+        console.warn("code: ", node.value);
       }
       node.value = child.stdout;
     }
