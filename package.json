@@ -1,6 +1,6 @@
 {
   "name": "remark-clang-format",
-  "version": "2.3.0",
+  "version": "1.9.1",
   "description": "run clang-format for code in markdown",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
   "homepage": "https://github.com/Ir1d/remark-clang-format#readme",
   "dependencies": {
     "clang-format": "^1.2.4",
-    "unist-util-visit": "^3.1.0"
+    "unist-util-visit": "^1.4.1"
   },
   "devDependencies": {
     "ava": "^3.15.0",
@@ -37,6 +37,5 @@
     "remark": "^13.0.0",
     "remark-parse": "^9.0.0",
     "zx": "^2.0.0"
-  },
-  "type": "module"
+  }
 }

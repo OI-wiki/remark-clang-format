@@ -1,27 +1,37 @@
 'use strict';
 
-import { visit } from 'unist-util-visit';
-import { spawnSync as spawnSync } from 'child_process';
+var visit = require('unist-util-visit');
+// var fs = require("fs");
+var spawnSync = require('child_process').spawnSync;
 
 function visitor(node) {
   if (node.type == 'code' || node.type == 'inlineCode') {
-  // if (node.type == 'inlineCode') {
+    // if (node.type == 'inlineCode') {
     if (
       node.lang &&
       (node.lang.toLowerCase() == 'c++' ||
         node.lang.toLowerCase() == 'cpp' ||
         node.lang.toLowerCase() == 'c') &&
       (!node.meta || !node.meta.includes('nolint')) &&
-      (node.value && (!node.value.includes('--8<--')))
+      node.value &&
+      !node.value.includes('--8<--')
     ) {
       const child = spawnSync('clang-format', { input: node.value });
-      node.value = child.stdout;
+      if (child.stderr) {
+        console.warn('[remark-clang-format] stderr: ', child.stderr);
+      }
+      if (!child.stdout) {
+        console.warn('[remark-clang-format] empty stdout');
+        console.warn('code: ', node.value);
+      } else {
+        node.value = child.stdout;
+      }
     }
   }
 }
 
-export default function attacher() {
+module.exports = function attacher() {
   return function transformer(tree) {
     visit(tree, visitor);
   };
-}
+};
