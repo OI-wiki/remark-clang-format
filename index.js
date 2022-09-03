@@ -2,12 +2,14 @@
 
 import { visit } from 'unist-util-visit';
 import { spawnSync as spawnSync } from 'child_process';
+import * as prettier from 'prettier';
 
 function visitor(node) {
   if (
     node.type == 'code' &&
     node.lang &&
-    (!node.meta || !node.meta.includes('nolint')) && node.value &&
+    (!node.meta || !node.meta.includes('nolint')) &&
+    node.value &&
     !node.value.includes('--8<--')
   ) {
     switch (node.lang) {
@@ -29,6 +31,14 @@ function visitor(node) {
         } else {
           node.value = child.stdout;
         }
+        break;
+
+      case 'javascript':
+      case 'typescript':
+      case 'js':
+      case 'ts':
+        const formattedText = prettier.format(node.value);
+        node.value = formattedText;
         break;
     }
   }
