@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Ir1d/remark-clang-format#readme",
   "dependencies": {
+    "@babel/parser": "^7.18.13",
     "clang-format": "^1.2.4",
     "prettier": "^2.3.2",
     "unist-util-visit": "^3.1.0"

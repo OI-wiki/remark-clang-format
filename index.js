@@ -37,7 +37,15 @@ function visitor(node) {
       case 'typescript':
       case 'js':
       case 'ts':
-        const formattedText = prettier.format(node.value);
+        const formattedText = prettier
+          .format(node.value, {
+            parser: 'babel',
+            endOfLine: 'auto',
+            semi: true,
+            singleQuote: true,
+            trailingComma: 'all',
+          })
+          .trimEnd(); // Prettier inserts trailing line which we do not want
         node.value = formattedText;
         break;
     }
