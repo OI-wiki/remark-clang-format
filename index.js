@@ -16,20 +16,22 @@ function visitor(node) {
       case 'c++':
       case 'cpp':
       case 'c':
-        const child = spawnSync('clang-format', { input: node.value });
-        if (child.stderr.toString()) {
-          console.warn(
-            '[remark-clang-format] stderr: ',
-            child.stderr.toString(),
-          );
-        }
-        if (!child.stdout) {
-          console.warn('[remark-clang-format] empty stdout');
-          console.warn('[remark-clang-format] original code: ', node.value);
-          console.warn('[remark-clang-format] child info', child);
-          // node value left untouched
-        } else {
-          node.value = child.stdout;
+        {
+          const child = spawnSync('clang-format', { input: node.value });
+          if (child.stderr.toString()) {
+            console.warn(
+              '[remark-clang-format] stderr: ',
+              child.stderr.toString(),
+            );
+          }
+          if (!child.stdout) {
+            console.warn('[remark-clang-format] empty stdout');
+            console.warn('[remark-clang-format] original code: ', node.value);
+            console.warn('[remark-clang-format] child info', child);
+            // node value left untouched
+          } else {
+            node.value = child.stdout;
+          }
         }
         break;
 
@@ -37,16 +39,18 @@ function visitor(node) {
       case 'typescript':
       case 'js':
       case 'ts':
-        const formattedText = prettier
-          .format(node.value, {
-            parser: 'babel',
-            endOfLine: 'auto',
-            semi: true,
-            singleQuote: true,
-            trailingComma: 'all',
-          })
-          .trimEnd(); // Prettier inserts trailing line which we do not want
-        node.value = formattedText;
+        {
+          const formattedText = prettier
+            .format(node.value, {
+              parser: 'babel',
+              endOfLine: 'auto',
+              semi: true,
+              singleQuote: true,
+              trailingComma: 'all',
+            })
+            .trimEnd(); // Prettier inserts trailing line which we do not want
+          node.value = formattedText;
+        }
         break;
     }
   }
