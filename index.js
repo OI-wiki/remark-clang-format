@@ -40,7 +40,7 @@ function visitor(node) {
       case 'js':
       case 'ts':
         {
-          const formattedText = prettier
+          const formatted = prettier
             .format(node.value, {
               parser: 'babel',
               endOfLine: 'auto',
@@ -49,7 +49,7 @@ function visitor(node) {
               trailingComma: 'all',
             })
             .trimEnd(); // Prettier inserts trailing line which we do not want
-          node.value = formattedText;
+          node.value = formatted;
         }
         break;
     }
