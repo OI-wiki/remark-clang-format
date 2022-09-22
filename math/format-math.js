@@ -10,8 +10,6 @@ function visitor(node) {
   return CONTINUE;
 }
 
-export default function formatMath() {
-  return function transformer(tree) {
-    visit(tree, ['math', 'inlineMath'], visitor);
-  };
+export default function formatMath(tree) {
+  visit(tree, ['math', 'inlineMath'], visitor);
 }

@@ -25,7 +25,7 @@ async function TestInputFile(filename) {
       .process(input);
 
     const formatted = await baseProcessor()
-      .use(formatMath)
+      .use(() => formatMath)
       .use(remarkRehype)
       .use(rehypeMathJax)
       .use(rehypeFormat)
