@@ -42,7 +42,7 @@
     "rehype-stringify": "^9.0.3",
     "remark": "^13.0.0",
     "remark-math": "^5.1.1",
-    "remark-parse": "^9.0.0",
+    "remark-parse": "^10.0.1",
     "remark-rehype": "^10.1.0",
     "unified": "^10.1.2",
     "zx": "^2.0.0"
