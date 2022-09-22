@@ -44,6 +44,7 @@
     "remark-math": "^5.1.1",
     "remark-parse": "^9.0.0",
     "remark-rehype": "^10.1.0",
+    "unified": "^10.1.2",
     "zx": "^2.0.0"
   },
   "type": "module"
