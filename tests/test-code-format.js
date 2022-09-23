@@ -21,3 +21,4 @@ async function T(num) {
 T(1);
 T(2);
 T(3);
+T(4);
