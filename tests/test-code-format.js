@@ -1,8 +1,9 @@
 import test from 'ava';
 import { promises } from 'fs';
-import remark from 'remark';
+import { remark } from 'remark';
+import remarkMath from 'remark-math';
 
-import de from '../index.js';
+import remarkCodeFormat from '../index.js';
 
 async function T(num) {
   test(`format file #${num}`, async (t) => {
@@ -11,7 +12,8 @@ async function T(num) {
       `tests/resources/code/${num}.out.md`,
     );
     remark()
-      .use(de)
+      .use(remarkMath)
+      .use(remarkCodeFormat)
       .process(infile, function (err, res) {
         t.is(String(res), String(outfile));
       });
