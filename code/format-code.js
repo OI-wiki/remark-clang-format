@@ -47,7 +47,7 @@ function visitor(node) {
           console.warn('[remark-ruff] child info', child);
           // node value left untouched
         } else {
-          node.value = child.stdout;
+          node.value = child.stdout.toString().trimEnd();
         }
         break;
       }
