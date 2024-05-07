@@ -1,6 +1,6 @@
 {
   "name": "remark-clang-format",
-  "version": "2.4.3",
+  "version": "2.4.4",
   "description": "run clang-format for code in markdown",
   "main": "index.js",
   "scripts": {
