@@ -16,7 +16,7 @@ function visitor(node) {
       case 'cpp':
       case 'c': {
         const child = spawnSync('clang-format', { input: node.value });
-        if (child.stderr.toString()) {
+        if (child.stderr.length > 0) {
           console.warn(
             '[remark-clang-format] stderr: ',
             child.stderr.toString(),
