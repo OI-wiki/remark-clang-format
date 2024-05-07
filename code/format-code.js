@@ -21,6 +21,7 @@ function visitor(node) {
             '[remark-clang-format] stderr: ',
             child.stderr.toString(),
           );
+          break;
         }
         if (!child.stdout) {
           console.warn('[remark-clang-format] empty stdout');
@@ -40,6 +41,7 @@ function visitor(node) {
         });
         if (child.stderr && child.stderr.length > 0) {
           console.warn('[remark-ruff] stderr: ', child.stderr.toString());
+          break;
         }
         if (!child.stdout) {
           console.warn('[remark-ruff] empty stdout');
