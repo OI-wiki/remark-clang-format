@@ -33,6 +33,25 @@ function visitor(node) {
         break;
       }
 
+      case 'python':
+      case 'py': {
+        const child = spawnSync('ruff', ['format', '-'], {
+          input: node.value,
+        });
+        if (child.stderr.length > 0) {
+          console.warn('[remark-ruff] stderr: ', child.stderr.toString());
+        }
+        if (!child.stdout) {
+          console.warn('[remark-ruff] empty stdout');
+          console.warn('[remark-ruff] original code: ', node.value);
+          console.warn('[remark-ruff] child info', child);
+          // node value left untouched
+        } else {
+          node.value = child.stdout;
+        }
+        break;
+      }
+
       case 'javascript':
       case 'typescript':
       case 'js':
