@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "ava",
-    "release": "zx scripts/release.mjs"
+    "release": "zx scripts/release.mjs",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
