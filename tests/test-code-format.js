@@ -13,7 +13,7 @@ async function T(num) {
     );
     remark()
       .use(remarkMath)
-      .use(remarkCodeFormat)
+      .use(remarkCodeFormat, { math: true })
       .process(infile, function (err, res) {
         t.is(String(res), String(outfile));
       });
