@@ -21,6 +21,7 @@ function visitor(node) {
             '[remark-clang-format] stderr: ',
             child.stderr.toString(),
           );
+          console.warn('[remark-clang-format] original code: ', node.value);
           break;
         }
         if (!child.stdout) {
@@ -41,6 +42,7 @@ function visitor(node) {
         });
         if (child.stderr && child.stderr.length > 0) {
           console.warn('[remark-ruff] stderr: ', child.stderr.toString());
+          console.warn('[remark-ruff] original code: ', node.value);
           break;
         }
         if (!child.stdout) {
