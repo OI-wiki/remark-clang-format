@@ -14,6 +14,9 @@ function visitor(node) {
     switch (node.lang) {
       case 'c++':
       case 'cpp':
+      case 'h':
+      case 'hpp':
+      case 'java':
       case 'c': {
         const child = spawnSync('clang-format', { input: node.value });
         if (child.stderr && child.stderr.length > 0) {
